@@ -1,9 +1,11 @@
 import csv
-from app.models import Thread, Forum, UserProfile, Post
+from forum.models import Thread, Forum, UserProfile, Post
 from django.contrib.auth.models import User
 
+filename = "commotion-discuss.txt_sorted.csv"
+
 # Open the csv we're reading from
-with open('commotion-discuss.txt_sorted.csv', 'rb') as csvfile:
+with open(filename, 'rb') as csvfile:
 	forum_data_reader = csv.reader(csvfile, delimiter=',', quotechar='"')
 	# Add forums
 	forums = []
@@ -17,7 +19,7 @@ with open('commotion-discuss.txt_sorted.csv', 'rb') as csvfile:
 
 
 #### Note need to correct user password creation
-with open('commotion-discuss.txt_sorted.csv', 'rb') as csvfile:
+with open(filename, 'rb') as csvfile:
 	forum_data_reader = csv.reader(csvfile, delimiter=',', quotechar='"')
 	# Add users
 	users = []
@@ -35,7 +37,7 @@ with open('commotion-discuss.txt_sorted.csv', 'rb') as csvfile:
 		u = User.objects.create_user(first_name = firstname, last_name = lastname, username = user, password="default123", email="default@forum.com")
 		u.save()
 
-with open('commotion-discuss.txt_sorted.csv', 'rb') as csvfile:
+with open(filename, 'rb') as csvfile:
 	forum_data_reader = csv.reader(csvfile, delimiter=',', quotechar='"')
 		# Add threads
 	threads = []
@@ -50,7 +52,7 @@ with open('commotion-discuss.txt_sorted.csv', 'rb') as csvfile:
 				t.save()
 
 # Add posts
-with open('commotion-discuss.txt_sorted.csv', 'rb') as csvfile:
+with open(filename, 'rb') as csvfile:
 	forum_data_reader = csv.reader(csvfile, delimiter=',', quotechar='"')
 	for index, row in enumerate(forum_data_reader):
 		if index >0:
