@@ -9,33 +9,41 @@ with open(filename, 'rb') as csvfile:
 	forum_data_reader = csv.reader(csvfile, delimiter=',', quotechar='"')
 	# Add forums
 	forums = []
+	forum_objects = Forum.objects.all()
+	for f in forum_objects:
+		forums.append(f.title)
 	for index, row in enumerate(forum_data_reader):
 		if index >0:
 			if row[1] not in forums:
 				forums.append(row[1])
-	for forum in forums:
-		f = Forum(title = forum)
-		f.save()
+				f = Forum(title = row[1])
+				f.save()
 
 
 #### Note need to correct user password creation
 with open(filename, 'rb') as csvfile:
 	forum_data_reader = csv.reader(csvfile, delimiter=',', quotechar='"')
-	# Add users
+	# Create a list of all users already in the database
 	users = []
-	for index, row in enumerate(forum_data_reader):
-		if index >0:
-			if row[5] not in users:
-				users.append(row[5])
-	for user in users:
-		try:
-			firstname = user.split(" ")[0]
-			lastname = user.split(" ")[1]
-		except:
-			firstname = "Unknown"
-			lastname = "User"
-		u = User.objects.create_user(first_name = firstname, last_name = lastname, username = user, password="default123", email="default@forum.com")
-		u.save()
+	user_objects = User.objects.all()
+	for u in user_objects:
+		if not u.is_staff:
+			users.append(u.username)
+		for index, row in enumerate(forum_data_reader):
+			if index >0:
+				if row[5] not in users:
+					users.append(row[5])
+					try:
+						firstname = user.split(" ")[0]
+						lastname = user.split(" ")[1]
+					except:
+						firstname = "Unknown"
+						lastname = "User"
+					try:
+						u = User.objects.create_user(first_name = firstname, last_name = lastname, username = row[5], password="default123", email="default@forum.com")
+						u.save()
+					except:
+						pass
 
 with open(filename, 'rb') as csvfile:
 	forum_data_reader = csv.reader(csvfile, delimiter=',', quotechar='"')
