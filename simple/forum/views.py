@@ -1,32 +1,25 @@
 from django.shortcuts import render, get_object_or_404
-from PIL import Image as PImage
+from forum.models import Forum, Thread, Post, UserProfile
 
-from simple.settings import MEDIA_ROOT
-from forum.models import Forum
-from forum.shared.utils import *
-from forum.shared.utils import ContainerFormMixin
-from django.forms import ModelForm
-
-from forum.detail import DetailView
-from edit import CreateView, UpdateView
-from list_custom import ListView, ListRelated
-
-from forms import ProfileForm, PostForm
 from django.template.loader import get_template
 # Create your views here.
 
-def Main(request):
-	forum = Forum.objects.all()
-	return render(request, "list.html",)
+def Index(request):
+	return render(request, "Index.html",)
 
-def ForumView(request):
-	forumview = get_object_or_404(forum, pk=forum_title)
-	return render(request, 'forum.html', {'forumview':forumview})
+def ForumHome(request):
+	all_forums = Forum.objects.all()
+	return render(request, 'Forums.html', {'all_forums': all_forums})
 
-def ThreadView(request):
-	threadview = get_object_or_404(thread, pk=thread_title)
-	return render(request, 'thread.html', {'threadview': threadview})
+def ForumView(request, forum_id):
+	forum = get_object_or_404(Forum, pk= forum_id)
+	all_threads = Thread.objects.filter( forum = forum).all()
+	return render(request, 'ForumView.html', {'forum': forum, 'all_threads': all_threads})
 
-def EditProfile(request):
-	UserProfile = get_object_or_404(UserProfile, pk=User)
+def ThreadView(request, thread_id):
+	threadview = get_object_or_404(thread, pk=thread_id)
+	return render(request, 'Thread.html', {'threadview': threadview})
+
+def EditProfile(request, user_id):
+	UserProfile = get_object_or_404(UserProfile, pk=user_id)
 	return render(request, 'profile.html', {'editprofile': editprofile})

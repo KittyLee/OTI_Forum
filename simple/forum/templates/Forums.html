@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>Commotion Forums</title>
+	</head>
+	<body>
+
+Here are some Forums around Commotion:
+
+	{% for forum in all_forums %}
+
+		<div><a href="{% url 'ForumView' forum.id %}">{{ forum.title }}</a></div>
+
+	{% endfor %}
+
+	</body>
+</html>

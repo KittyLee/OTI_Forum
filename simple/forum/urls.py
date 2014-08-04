@@ -5,8 +5,9 @@ from forum import views
 
 urlpatterns = patterns('',
 
-	url(r'^Forum/$', views.Main, name="Main"),
-	url(r'^ForumView/(?P<Forum_title>\d+)/$', views.ForumView, name="ForumView"),
-	url(r'^ThreadView/(?P<Thread_title>\d+)/$', views.ThreadView, name="ThreadView"),
-	url(r'^EditProfile/(?P<UserProfile_user>\d+)/$', views.EditProfile, name="EditProfile"),
+	url(r'^Index/$', views.Index, name="index"),
+	url(r'^ForumHome/$', views.ForumHome, name="ForumHome"),
+	url(r'^ForumView/(?P<forum_id>\d+)/$', views.ForumView, name="ForumView"),
+	url(r'^ThreadView/(?P<thread_id>\d+)/$', views.ThreadView, name="ThreadView"),
+	url(r'^EditProfile/(?P<user_id>\d+)/$', views.EditProfile, name="EditProfile"),
 	)	
