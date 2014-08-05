@@ -1,9 +1,8 @@
-<html>
-	<head>
-		<title>Thread: {{ thread.title }}</title>
-	</head>
+{% extends "base.html" %}
 
-	<body>
+
+{% block content %}
+
 		<h1>Thread: {{ thread.title }}</h1>
 
 		<div>Posts:</div>
@@ -16,5 +15,4 @@
 		</div>
 
 	{% endfor %}
-	</body>
-</html>
+	{% endblock %}

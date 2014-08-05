@@ -1,9 +1,8 @@
-<html>
-	<head>
-		<title>Forum: {{ forum.title }}</title>
-	</head>
+{% extends "base.html" %}
 
-	<body>
+
+{% block content %}
+	
 		<h1>Forum: {{ forum.title }}</h1>
 
 		<div>Threads:</div>
@@ -13,5 +12,4 @@
 		<div><a href="{% url 'forum:threadView' thread.id %}">{{ thread.title }}</a></div>
 
 	{% endfor %}
-	</body>
-</html>
+	{% endblock %}

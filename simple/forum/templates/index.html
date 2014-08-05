@@ -1,56 +1,10 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<!--Above tag tells the browser what version of html the page is written in-->
-
-<html>
-
-<head> 
-	<title> Homepage </title>
-	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'blue.css' %}">
-	<href="{% static 'simple-map-d3.css' %}">
-	<script src="simple-map-d3.js"></script>
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="http://d3js.org/d3.v3.min.js"></script>
-	<script src="http://d3js.org/topojson.v1.min.js"></script>
-	<script src="http://d3js.org/queue.v1.min.js"></script>
+{% extends "base.html" %}
 
 
-</head>
-
-
-<body>
-
-<a href="https://commotionwireless.net/"><img src ="https://commotionwireless.net/images/commotion_kbabout_measure-03_0_0.png"/></a>
-
-
- <div id= "title">Commotion Community Portal</div>
-
- <div id="nav_bar">
- 	<div class="login_btn">Sign-Up</div>
- 	<div class="login_btn">Login</div>
- </div>
- 
-<!--I am nesting the sign-up and login buttons inside the blue bar. The last div tag is closing the whole nav_bar-->
-
-
-
- <div id="menu_bar">
- <div onClick="location.href='http://www.google.com'" class="feature_btn">Documents</div>
- <div onClick="location.href='http://www.codeforprogress.org'"class="feature_btn">Discuss</div></div>
-
-
-<form>
-	<input type="text" placeholder="Search..." required>
-	<input type="button" value="Search">
-</form>
-
-
-
-
+{% block content %}
 
 <!--map code below-->
-
+{% load staticfiles %}
 <script> 
 		 var width= 960,
 		     height= 500;
@@ -120,9 +74,4 @@
 
 
 
-</body>
-
-
-
-
-</html>
+{% endblock %}
