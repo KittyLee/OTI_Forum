@@ -2,7 +2,7 @@ import csv
 from forum.models import Thread, Forum, UserProfile, Post
 from django.contrib.auth.models import User
 
-filename = "commotion-discuss.txt_sorted.csv"
+filename = "commotion-announce.txt_sorted.csv"
 
 # Open the csv we're reading from
 with open(filename, 'rb') as csvfile:

@@ -1,16 +1,16 @@
 <html>
 	<head>
-		<title>Froum - {{ ForumView.title }}</title>
+		<title>Forum: {{ forum.title }}</title>
 	</head>
 
 	<body>
-		<h1>Froum - {{ ForumView.title }}</h1>
+		<h1>Forum: {{ forum.title }}</h1>
 
 		<div>Threads:</div>
 
 		{% for thread in all_threads %}
 
-		<div><a href="{% url 'ThreadView' thread.id %}">{{ thread.title }}</a></div>
+		<div><a href="{% url 'forum:threadView' thread.id %}">{{ thread.title }}</a></div>
 
 	{% endfor %}
 	</body>

@@ -8,7 +8,7 @@ Here are some Forums around Commotion:
 
 	{% for forum in all_forums %}
 
-		<div><a href="{% url 'ForumView' forum.id %}">{{ forum.title }}</a></div>
+		<div><a href="{% url 'forum:forumView' forum.id %}">{{ forum.title }}</a></div>
 
 	{% endfor %}
 
