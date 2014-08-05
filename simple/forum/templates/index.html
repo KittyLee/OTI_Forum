@@ -6,8 +6,9 @@
 
 <head> 
 	<title> Homepage </title>
-	<link rel="stylesheet" type="text/css" href="blue.css">
-	<href="simple-map-d3.css">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'blue.css' %}">
+	<href="{% static 'simple-map-d3.css' %}">
 	<script src="simple-map-d3.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -68,8 +69,8 @@
 		 var title = d3.select("h1");
 
 		 queue()
-		 	.defer(d3.json,"world-110m.json")
-		 	.defer(d3.tsv,"world-country-names.tsv")
+		 	.defer(d3.json,"{% static 'world-110m.json' %}")
+		 	.defer(d3.tsv,"{% static 'world-country-names.tsv' %}")
 		 	.await(ready);
 
 		 function ready (error,world,names) {
