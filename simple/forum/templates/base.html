@@ -27,8 +27,8 @@
  <div id= "title">Commotion Community Portal</div>
 
  <div id="nav_bar">
- 	<div class="login_btn">Sign-Up</div>
- 	<div class="login_btn">Login</div>
+ 	<div onClick="location.href='{% url 'forum:signUp' %}'" class="login_btn">Sign-Up</div>
+ 	<div onClick="location.href='{% url 'forum:login' %}'" class="login_btn">Login</div>
  </div>
  
 <!--I am nesting the sign-up and login buttons inside the blue bar. The last div tag is closing the whole nav_bar-->

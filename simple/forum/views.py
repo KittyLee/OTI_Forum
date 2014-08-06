@@ -28,6 +28,9 @@ def threadView(request,thread_id):
 def startThread(request):
 	return render(request, 'startThread.html')
 
+def login(request):
+	return render(request, 'login.html')
+
 def signUp(request):
 	return render(request, 'signUp.html')
 
