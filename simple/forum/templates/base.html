@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
 <!--Above tag tells the browser what version of html the page is written in-->
+
+<meta charset="utf-8">
 
 <html>
 
@@ -8,6 +9,7 @@
 	<title> Homepage </title>
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'blue.css' %}">
+	<!-- This is how you % reference css files in Django apps-->
 	<href="{% static 'simple-map-d3.css' %}">
 	<script src="simple-map-d3.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -15,35 +17,33 @@
 	<script src="http://d3js.org/topojson.v1.min.js"></script>
 	<script src="http://d3js.org/queue.v1.min.js"></script>
 
-
 </head>
 
 
 <body>
+	<center><font size="6">Commotion Community Portal</font></b></center>
 
-<a href="https://commotionwireless.net/"><img src ="https://commotionwireless.net/images/commotion_kbabout_measure-03_0_0.png"/></a>
-
-
- <div id= "title">Commotion Community Portal</div>
-
- <div id="nav_bar">
+<div id="nav_bar">
+ 	<a href="https://commotionwireless.net/"><img src ="https://commotionwireless.net/images/commotion_kbabout_measure-03_0_0.png"height="98"></a>
  	<div onClick="location.href='{% url 'forum:signUp' %}'" class="login_btn">Sign-Up</div>
  	<div onClick="location.href='{% url 'forum:login' %}'" class="login_btn">Login</div>
- </div>
+</div>
  
 <!--I am nesting the sign-up and login buttons inside the blue bar. The last div tag is closing the whole nav_bar-->
 
 
 
- <div id="menu_bar">
- <div onClick="location.href='http://www.google.com'" class="feature_btn">Documents</div>
- <div onClick="location.href='{% url 'forum:forumHome' %}'" class="feature_btn">Discuss</div></div>
-
-
-<form>
-	<input type="text" placeholder="Search..." required>
+<div id="menu_bar">
+ 	<div onClick="location.href='http://www.google.com'" class="feature_btn">Documents</div>
+ 	<div onClick="location.href='{% url 'forum:forumHome' %}'" class="feature_btn">Discuss</div>
+	<input type="text" placeholder="Search..." required> 
 	<input type="button" value="Search">
-</form>
+
+</div>
+
+
+<h1> </h1>
+
 
 {% block content %}
 {% endblock %}
