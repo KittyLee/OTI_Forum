@@ -3,10 +3,19 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from forum.models import Forum, Thread, Post, UserProfile
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 from django.template.loader import get_template
 # Create your views here.
+def login(request):
+	username =request.POST['username']
+	password = request.POST['password']
+	user = authenticate(username=username, password=password)
+	if user is not None:
+		if user.is_active:
+			login(request, user)
 
 def index(request):
 	return render(request, "index.html",)
@@ -27,9 +36,6 @@ def threadView(request,thread_id):
 
 def startThread(request):
 	return render(request, 'startThread.html')
-
-def login(request):
-	return render(request, 'login.html')
 
 def signUp(request):
 	return render(request, 'signUp.html')
