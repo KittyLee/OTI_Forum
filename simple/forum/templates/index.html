@@ -26,7 +26,7 @@
 		 	.defer(d3.json,"{% static 'world-110m.json' %}")
 		 	.defer(d3.tsv,"{% static 'world-country-names.tsv' %}")
 		 	.await(ready);
-
+ha
 		 function ready (error,world,names) {
 		 	var globe = {type: "Sphere"},
 		 	land= topojson.feature(world,world.objects.land),
