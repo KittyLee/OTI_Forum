@@ -17,6 +17,9 @@ def login(request):
 		if user.is_active:
 			login(request, user)
 
+def logout(request):
+	logout(request)
+
 def index(request):
 	return render(request, "index.html",)
 
