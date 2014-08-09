@@ -1,18 +1,16 @@
-#title {text-align:center; 
-			font-size:40px;
-			padding-bottom:30px;
-			padding-top:20px;
- 			font-weight:bold;}
+
 /*padding is inside the box, margin is outside the box*/
 
 #nav_bar {height:70px;
 	      width:100%;
 	      background-color:#00ffcf;
-	      padding-top:10px;
+	      position:fixed;
+        top: 0;
+        right: 0;
 	      padding-bottom:30px;
 	      padding-left:20px;
-	      	}
-
+	      font}
+#canvas {margin-top: 100px}
 	       
 .login_btn {height:40px;
 			width:220px;
@@ -26,16 +24,30 @@
 	    font-weight:bold;
 	    font-size:20px;
 	    font-family: Arial;
-		  float: right;}
+		  float: right;
+      border-radius: 20px;
+        }
 
 .login_btn:hover {background-color:#e8ff00;
-                }
+   }
 
+span.z{ position: absolute;
+        top:20px;
+        padding-left: 30px;
+        font-size: 30px;
+        font-weight: bold;
 
+}
+
+#title {position:relative;
+        top:-200px;}
 
 #menu_bar {height:60px;
 	      width:100%;
-	     
+	      position:fixed;
+        top:100px;
+        left: 0;
+
 	      background-color:#fe739b;
 	      padding-top:20px;
 	      padding-bottom:20px;
@@ -55,6 +67,7 @@
       font-size:20px;
       font-family: Arial;
       float: left;
+      border-radius: 20px;
 
 }
 
@@ -66,16 +79,8 @@
 /* css for search box */
 
 
-form{width:500px;
-    margin:50px;
-    float:right;
-    padding:8px 15px;
-    background:rgba(50,50,50,0.2);
-    
-    
-    
 
-        }
+
 
 /* end of search code  */
 
@@ -89,9 +94,9 @@ form{width:500px;
 
 h1 {
   position: absolute;
-  top: 280px;
+  top: 450px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 40px;
   text-align: center;
   width: 960px;
 
