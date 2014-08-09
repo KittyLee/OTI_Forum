@@ -2,7 +2,7 @@
 
 
 {% block content %}
-
+<div onClick="location.href='{% url 'forum:newForum' %}'" class="login_btn">Create New Forum</div>
 Here are some Forums around Commotion:
 
 	{% for forum in all_forums %}

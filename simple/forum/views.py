@@ -1,5 +1,5 @@
 import urlparse
-from forms import ProfileForm, PostForm
+from forms import ProfileForm, PostForm, ForumForm, ThreadForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from forum.models import Forum, Thread, Post, UserProfile
@@ -22,7 +22,24 @@ def logout(request):
 	logout(request)
 
 def signUp(request):
-	return render(request, 'signUp.html')
+	modelform = ProfileForm()
+	if request.method == 'POST':
+		modelform = ProfileForm(request.POST)
+	if modelform.is_valid:
+		first_name = request.POST['first_name']
+		last_name = request.POST['last_name']
+		username = request.POST['username']
+		email = request.POST['email']
+		password = request.POST['password']
+		# We'll do the password check in a second
+		u = User.objects.create_user(first_name = first_name, last_name = last_name, email = email, password = password, username=username)	
+		u.save()
+		user = authenticate(username=username, password=password)
+		if user is not None:
+			if user.is_active:
+				login(request, user)
+		return HttpResponseRedirect("/editProfile/%s/" % request.user.id)
+	return render(request, 'signUp.html', {'modelform': modelform})
 
 def index(request):
 	return render(request, "index.html",)
@@ -30,6 +47,17 @@ def index(request):
 def forumHome(request):
 	all_forums = Forum.objects.all()
 	return render(request, 'forums.html', {'all_forums': all_forums})
+
+def newForum(request):
+	modelform = ForumForm()
+	if request.method == 'POST':
+		modelform = ForumForm(request.POST)
+	if modelform.is_valid():
+		title = modelform.cleaned_data['title']
+		newforum = Forum(title = title)
+		newforum.save()
+		return HttpResponseRedirect("/forum/forumHome/")
+	return render(request, 'newForum.html', {'modelform': modelform})
 
 def forumView(request,forum_id):
 	forum = get_object_or_404(Forum, pk=forum_id)
@@ -41,9 +69,30 @@ def threadView(request,thread_id):
 	all_posts = Post.objects.filter(thread=thread).all()
 	return render(request, 'threadView.html', {'thread': thread, 'all_posts': all_posts})
 
-def startThread(request):
+def newThread(request, forum_id):
+	modelform = ThreadForm()
+	if request.method == 'POST':
+		modelform = ThreadForm(request.POST)
+	if modelform.is_valid():
+		title = modelform.cleaned_data['title']
+		forum = get_object_or_404(Forum, pk=forum_id)
+		newthread = Thread(title = title, forum = forum)
+		newthread.save()
+		return HttpResponseRedirect("/forum/forumView/%s/" % forum_id)
+	return render(request, 'newThread.html', {'modelform': modelform})
+
+def reply(request, thread_id):
 	modelform = PostForm()
-	return render(request, 'startThread.html', {'modelform': modelform})
+	if request.method == 'POST':
+		modelform = PostForm(request.POST)
+	if modelform.is_valid():
+		title = modelform.cleaned_data['title']
+		body = modelform.cleaned_data['body']
+		thread = get_object_or_404(Thread, pk=thread_id)
+		newpost = Post(title = title, body = body, creator = request.user, thread = thread )
+		newpost.save()
+		return HttpResponseRedirect("/forum/threadView/%s/" % thread_id)
+	return render(request, 'reply.html', {'modelform': modelform})
 
 
 def editProfile(request,user_id):

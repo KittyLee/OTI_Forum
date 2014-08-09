@@ -2,6 +2,8 @@
 
 
 {% block content %}
+
+<div onClick="location.href='{% url 'forum:newThread' forum.id %}'" class="login_btn">Create New Thread</div>
 	
 		<h1>Forum: {{ forum.title }}</h1>
 
