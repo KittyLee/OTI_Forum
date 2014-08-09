@@ -1,4 +1,5 @@
 import urlparse
+from forms import ProfileForm, PostForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from forum.models import Forum, Thread, Post, UserProfile
@@ -20,6 +21,9 @@ def login(request):
 def logout(request):
 	logout(request)
 
+def signUp(request):
+	return render(request, 'signUp.html')
+
 def index(request):
 	return render(request, "index.html",)
 
@@ -38,10 +42,9 @@ def threadView(request,thread_id):
 	return render(request, 'threadView.html', {'thread': thread, 'all_posts': all_posts})
 
 def startThread(request):
-	return render(request, 'startThread.html')
+	modelform = PostForm()
+	return render(request, 'startThread.html', {'modelform': modelform})
 
-def signUp(request):
-	return render(request, 'signUp.html')
 
 def editProfile(request,user_id):
 	profile = get_object_or_404(UserProfile, pk=user_id)

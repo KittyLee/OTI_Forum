@@ -6,6 +6,8 @@
 
 		<div>Posts:</div>
 
+<div onClick="location.href='{% url 'forum:startThread' %}'" class="login_btn">Reply</div>
+
 	{% for post in all_posts %}
 
 		<div>
