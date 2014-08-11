@@ -7,8 +7,9 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from django.views.generic.edit import FormView
 from django.template.loader import get_template
+
 # Create your views here.
 def login(request):
 	username =request.POST['username']
@@ -17,6 +18,7 @@ def login(request):
 	if user is not None:
 		if user.is_active:
 			login(request, user)
+	return HttpResponseRedirect("/userProfile/%s/" % request.user.id)
 
 def logout(request):
 	logout(request)
@@ -25,7 +27,7 @@ def signUp(request):
 	modelform = ProfileForm()
 	if request.method == 'POST':
 		modelform = ProfileForm(request.POST)
-	if modelform.is_valid:
+	if modelform.is_valid():
 		first_name = request.POST['first_name']
 		last_name = request.POST['last_name']
 		username = request.POST['username']
@@ -38,6 +40,7 @@ def signUp(request):
 		if user is not None:
 			if user.is_active:
 				login(request, user)
+				
 		return HttpResponseRedirect("/editProfile/%s/" % request.user.id)
 	return render(request, 'signUp.html', {'modelform': modelform})
 
@@ -98,3 +101,15 @@ def reply(request, thread_id):
 def editProfile(request,user_id):
 	profile = get_object_or_404(UserProfile, pk=user_id)
 	return render(request, 'profile.html', {'profile': profile})
+
+def userProfile(request,user_id):
+	profile = get_object_or_404(UserProfile, pk=user_id)
+	return render(request, 'userProfile.html', {'profile': profile})
+
+@login_required
+def userProfile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+
+    return HttpResponseRedirect(reverse('userProfile.html', kwargs={'user_id': user.id}))
+
+   

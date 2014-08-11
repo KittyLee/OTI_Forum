@@ -16,4 +16,5 @@ urlpatterns = patterns('',
 	url(r'^threadView/(?P<thread_id>\d+)/$', views.threadView, name="threadView"),
 	url(r'^reply/(?P<thread_id>\d+)/$', views.reply, name="reply"),
 	url(r'^editProfile/(?P<user_id>\d+)/$', views.editProfile, name="editProfile"),
+	url(r'^userProfile/(?P<user_id>\d+)/$', views.userProfile, name="userProfile"),
 		)	

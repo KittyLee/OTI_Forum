@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div onClick="location.href='{% url 'forum:newThread' forum.id %}'" class="login_btn">Create New Thread</div>
+<div onClick="location.href='{% url 'newThread' forum.id %}'" class="login_btn">Create New Thread</div>
 	
 		<h1>Forum: {{ forum.title }}</h1>
 
@@ -11,7 +11,7 @@
 
 		{% for thread in all_threads %}
 
-		<div><a href="{% url 'forum:threadView' thread.id %}">{{ thread.title }}</a></div>
+		<div><a href="{% url 'threadView' thread.id %}">{{ thread.title }}</a></div>
 
 	{% endfor %}
 	{% endblock %}
