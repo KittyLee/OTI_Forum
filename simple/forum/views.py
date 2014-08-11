@@ -4,7 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from forum.models import Forum, Thread, Post, UserProfile
 from django.core.urlresolvers import reverse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import FormView
@@ -17,7 +18,7 @@ def login(request):
 	user = authenticate(username=username, password=password)
 	if user is not None:
 		if user.is_active:
-			login(request, user)
+			auth_login(request, user)
 	return HttpResponseRedirect("/userProfile/%s/" % request.user.id)
 
 def logout(request):
@@ -39,7 +40,7 @@ def signUp(request):
 		user = authenticate(username=username, password=password)
 		if user is not None:
 			if user.is_active:
-				login(request, user)
+				auth_login(request, user)
 				
 		return HttpResponseRedirect("/editProfile/%s/" % request.user.id)
 	return render(request, 'signUp.html', {'modelform': modelform})
@@ -99,7 +100,8 @@ def reply(request, thread_id):
 
 
 def editProfile(request,user_id):
-	profile = get_object_or_404(UserProfile, pk=user_id)
+	user = get_object_or_404(User, pk=user_id)
+	profile = UserProfile.objects.filter(user=user).first()
 	return render(request, 'profile.html', {'profile': profile})
 
 def userProfile(request,user_id):
