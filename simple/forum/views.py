@@ -103,13 +103,12 @@ def editProfile(request,user_id):
 	return render(request, 'profile.html', {'profile': profile})
 
 def userProfile(request,user_id):
-	profile = get_object_or_404(UserProfile, pk=user_id)
-	return render(request, 'userProfile.html', {'profile': profile})
+	profile = UserProfile.objects.get_or_create(user = user)[0]
+	return render(request, 'userProfile.html', kwargs={'profile': profile})
 
 @login_required
-def userProfile(request, user_id):
+def accountsprofile(request, user_id):
     user = get_object_or_404(User, id=user_id)
-
     return HttpResponseRedirect(reverse('userProfile.html', kwargs={'user_id': user.id}))
 
    
