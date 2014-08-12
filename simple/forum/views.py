@@ -1,3 +1,5 @@
+from PIL import Image as PImage
+from simple.settings import MEDIA_URL
 import urlparse
 from forms import ProfileForm, PostForm, ForumForm, ThreadForm
 from django.http import HttpResponseRedirect, HttpResponse
@@ -19,7 +21,7 @@ def login(request):
 	if user is not None:
 		if user.is_active:
 			auth_login(request, user)
-	return HttpResponseRedirect("/userProfile/%s/" % request.user.id)
+			return HttpResponseRedirect(reverse("userProfile"))
 
 def logout(request):
 	logout(request)
@@ -42,7 +44,7 @@ def signUp(request):
 			if user.is_active:
 				auth_login(request, user)
 				
-		return HttpResponseRedirect("/editProfile/%s/" % request.user.id)
+		return HttpResponseRedirect(reverse("editProfile"))
 	return render(request, 'signUp.html', {'modelform': modelform})
 
 def index(request):
@@ -51,6 +53,10 @@ def index(request):
 def forumHome(request):
 	all_forums = Forum.objects.all()
 	return render(request, 'forums.html', {'all_forums': all_forums})
+
+def documents(request):
+	all_documents = Forum.objects.all()
+	return render(request, "documents.html", {'all_documents': all_documents})
 
 def newForum(request):
 	modelform = ForumForm()
@@ -99,18 +105,49 @@ def reply(request, thread_id):
 	return render(request, 'reply.html', {'modelform': modelform})
 
 
-def editProfile(request,user_id):
-	user = get_object_or_404(User, pk=user_id)
+def userProfile(request):
+	user = get_object_or_404(User, pk=request.user.id)
+	profile = UserProfile.objects.get_or_create(user=user)[0]
+	return render(request, 'userProfile.html', {'profile': profile})
+
+
+def editProfile(request):
+	user = get_object_or_404(User, pk=request.user.id)
 	profile = UserProfile.objects.filter(user=user).first()
 	return render(request, 'profile.html', {'profile': profile})
 
-def userProfile(request,user_id):
-	profile = UserProfile.objects.get_or_create(user = user)[0]
-	return render(request, 'userProfile.html', kwargs={'profile': profile})
+	if request.method=="POST":
+		img = UploadForm(request.POST, request.FILES)       
+		if img.is_valid():
+			img.save()
+			return HttpResponseRedirect(reverse('imageupload'))
+		else:
+			img = UploadForm()
+			images = Upload.objects.all()
+			return render(request,'profile.html',{'form':img,'images':images})   
 
-@login_required
-def accountsprofile(request, user_id):
-    user = get_object_or_404(User, id=user_id)
-    return HttpResponseRedirect(reverse('userProfile.html', kwargs={'user_id': user.id}))
 
-   
+	# def modelform_valid(self, modelform):
+		# """Resize and save profile image."""
+		# remove old image if changed
+		# name = modelform.cleaned_data.get("avatar")
+		# pk   = self.kwargs.get("mfpk")
+		# old  = UserProfile.obj.get(pk=pk).avatar
+
+		# if old.name and old.name != name:
+			# old.delete()
+
+        # # save new image to disk & resize new image
+        # self.modelform_object = modelform.save()
+        # if self.modelform_object.avatar:
+        # 	img = PImage.open(self.modelform_object.avatar.path)
+        # 	img.thumbnail((160,160), PImage.ANTIALIAS)
+        # 	img.save(img.filename, "JPEG")
+        # return redir(self.success_url)
+
+
+def forum_context(request):
+    return dict(media_url=MEDIA_URL)
+
+
+    

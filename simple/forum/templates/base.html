@@ -8,7 +8,11 @@
 <head> 
 	<title> Homepage </title>
 	{% load staticfiles %}
-	<link rel="stylesheet" type="text/css" href="{% static 'blue.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'commotion.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'commotion-responsive-780.css' %}"  media="screen and (max-width: 780px)" >
+    <link rel="stylesheet" type="text/css" href="{% static 'commotion-responsive-480.css' %}"  media="screen and (max-width: 480px)" >
+
+    <link rel="stylesheet" type="text/css" href="{% static 'print.css' %}"  media="print">
 	<!-- This is how you % reference css files in Django apps-->
 	<href="{% static 'simple-map-d3.css' %}">
 	<script src="simple-map-d3.js"></script>
@@ -21,31 +25,64 @@
 
 
 <body>
-	
+
+	<div class="navbar navbar-inverse">
+  <div class="boxes-box" id="boxes-box-top_colors">
+    <div class="boxes-box-content">
+      <div class="navbar-inners">
+        <div class="color0">&nbsp;</div>
+        <div class="color1">&nbsp;</div>
+        <div class="color2">&nbsp;</div>
+        <div class="color3">&nbsp;</div>
+        <div class="color4">&nbsp;</div>
+      </div> 
+    </div>
+  </div>
+</div>
+
+
+<div id="logo">
+  <a href="/"><img src="/images/commotion_kbabout_measure-03_0_0.png" alt="Commotion Wireless logo"/></a>
+</div>
 <div id="nav_bar">
  	<a href="https://commotionwireless.net/"><img src ="https://commotionwireless.net/images/commotion_kbabout_measure-03_0_0.png"height="98"></a>
- 	
- 	<span class="z">Community Portal</span>
 
+
+ <!-- This is the menu bar 	 -->
+
+<div id="navbar">
+  <ul>
+    
+    <li class="static-nodrop"><a href='{% url 'documents' %}' title> Documents</a></li>
+    <li class="static-nodrop"><a href='{% url 'forumHome' %}' title> Discuss</a></li>
+    <li class="static-nodrop"><a href='{% url 'signUp' %}' title>Signup</a></li>
+    <li class="static-nodrop"><a href='{% url 'login' %}' title>Login</a></li>
+    
+
+ </ul> 
+</div>
+
+	<!-- <div onClick="location.href='{% url 'documents' %}'" class="feature_btn">Documents</div>
+ 	<div onClick="location.href='{% url 'forumHome' %}'" class="feature_btn">Discuss</div>
 	<div onClick="location.href='{% url 'signUp' %}'" class="login_btn">Sign-Up</div>
- 	<div onClick="location.href='{% url 'login' %}'" class="login_btn">Login</div>
-	
-	
+ 	<div onClick="location.href='{% url 'login' %}'" class="login_btn">Login</div> -->
+ 	
 
+<!-- this is the page header its black!	 -->
+
+	<div class="containercontent pageheadings">
+  <hr>
+  <h2 class="pageheadings">Community Portal</h2>
+</div>
+<div class="contentcontainer">
+  <div class="container">
 </div>
  
-<!--I am nesting the sign-up and login buttons inside the blue bar. The last div tag is closing the whole nav_bar-->
 
 
+<!-- I am nesting the sign-up and login buttons inside the blue bar. The last div tag is closing the whole nav_bar  -->
 
-<div id="menu_bar">
- 	<div onClick="location.href='http://www.google.com'" class="feature_btn">Documents</div>
- 	<div onClick="location.href='{% url 'forumHome' %}'" class="feature_btn">Discuss</div>
-
-
-
-
-<h1> </h1>
+<h1></h1> 
 
 
 {% block content %}

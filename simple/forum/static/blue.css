@@ -1,5 +1,39 @@
 
 /*padding is inside the box, margin is outside the box*/
+.navbar-inners {
+  height: 20px;
+  margin: 0;
+  width: 100%;
+  background-color: #877AED;
+  float: left;
+}
+.navbar-inverse {
+  border: none;
+}
+.color0 {
+    background-color: #FE739B;
+    float: left;
+    width: 5%;
+}
+.color1 {
+    background-color: #00FFCF;
+    float: left;
+    width: 43.5%;
+}
+.color2 {
+    background-color: #C7BA38;
+    float: left;
+    width: 3%;
+}
+.color3 {
+    background-color: #E8FF00;
+    float: left;
+    width: 43.5%;
+}
+.color4 {
+    width: 5%;
+    float: left;
+}
 
 #nav_bar {height:70px;
 	      width:100%;

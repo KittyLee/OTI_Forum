@@ -4,17 +4,17 @@
     <div class="main">
         <div id="rtitle">Edit Profile</div><br />
 
-        <p>
-            <form enctype="multipart/form-data" action="" method="POST"> {% csrf_token %}
-
-                {% if userprofile.avatar_image %}
-                    <p><img border="0" alt="Profile Pic" src="{{ userprofile.avatar_image }}" /></p>
-                {% endif %}
-
-                {{ modelform.avatar }}
-                <input type="submit" value="Submit" id="submit" />
-            </form>
-        </p>
+       <div style="padding:40px;margin:40px;border:1px solid #ccc">
+    <h1>picture</h1>
+    <form action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{form}} 
+        <input type="submit" value="Upload" />
+    </form>
+    {% for img in images %}
+        {{forloop.counter}}.<a href="{{ img.pic.url }}">{{ img.pic.name }}</a>
+        ({{img.upload_date}})<hr />
+    {% endfor %}
+</div>
     </div>
 
 {% endblock %}

@@ -25,3 +25,4 @@ class ThreadForm(ContainerFormMixin, ModelForm):
 	class Meta:
 		model   = Thread
 		exclude = ["body"]
+
