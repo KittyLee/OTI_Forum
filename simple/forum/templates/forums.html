@@ -3,12 +3,21 @@
 
 {% block content %}
 <div onClick="location.href='{% url 'newForum' %}'" class="login_btn">Create New Forum</div>
-Here are some Forums around Commotion:
 
+<div class="right-third">
+<div id="subsectin-menu">
+
+<h3>Here are some Forums around Commotion:</h3>
+
+<ul>
+	<li>
 	{% for forum in all_forums %}
 
 		<div><a href="{% url 'forumView' forum.id %}">{{ forum.title }}</a></div>
 
 	{% endfor %}
-
+</li>
+</ul>
+</div>
+</div>
 	{% endblock %}
