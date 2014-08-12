@@ -2,10 +2,10 @@
 
 
 {% block content %}
-<div onClick="location.href='{% url 'newForum' %}'" class="login_btn">Create New Forum</div>
-
+<!-- <div onClick="location.href='{% url 'newForum' %}'" class="login_btn">Create New Forum</div>
+ -->
 <div class="right-third">
-<div id="subsectin-menu">
+<div id="subsection-menu">
 
 <h3>Here are some Forums around Commotion:</h3>
 
@@ -16,6 +16,7 @@
 		<div><a href="{% url 'forumView' forum.id %}">{{ forum.title }}</a></div>
 
 	{% endfor %}
+	<div onClick="location.href='{% url 'newForum' %}'" class="login_btn">Create New Forum</div>
 </li>
 </ul>
 </div>

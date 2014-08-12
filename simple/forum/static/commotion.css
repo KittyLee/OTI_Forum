@@ -12,6 +12,7 @@ body {
   width: 100%;
   background-color: #877AED;
   float: left;
+
 }
 .navbar-inverse {
   border: none;
@@ -73,7 +74,7 @@ div#navbar ul > li > ul > li a{
   border: none;
 }
 ul.main-menu  {
-    display: block;
+    display: inline-block;
     float: right;
     width: 80%;
     margin-right: 2em;
@@ -82,19 +83,19 @@ ul.main-menu  {
 }
 ul.main-menu li {
     width: 20%;
-    display: block;
+    display: inline-block;
     float: left;
 }
 ul.main-menu li a {
-    display: block;
+    display: inline-block;
 }
 ul.main-menu ul li {
     list-style: none;
     list-style-type: none;
-    display: block;
+    display: inline-block;
 }
 ul.main-menu li ul {
-    display: none;
+    display: inline-block;
 }
 li.dropdown a,
 li.dropdown a:visited,
@@ -301,7 +302,7 @@ div.pageheadings hr {
 .right-third {
   width: 20%;
   min-width: 200px;
-  float: right;
+  float: left;
   margin: 2em;
 }
 .right-third a {
@@ -468,7 +469,7 @@ div#download-button-block .download-button a.button {
   background-color: #00FFCF;
   color: #000000;
   font-family: AsapBold;
-  font-size: 13px;
+  font-size: 18px;
   margin: 0;
   padding: 0.5em;
   text-decoration: none;
