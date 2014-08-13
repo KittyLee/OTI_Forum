@@ -2,10 +2,12 @@
 
 
 {% block content %}
+
+<h1> Enter your reply: </h1>
 <div class="main">
     <div id="reply">
     <form action="" method="POST"> {% csrf_token %}
-        <table>
+     <center><table></center>
             {{ modelform.as_table }}
         </table>
         <input type="submit" value="Submit" />

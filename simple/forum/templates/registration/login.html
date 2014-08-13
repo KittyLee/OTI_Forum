@@ -5,12 +5,12 @@
 
 	<div class="loginerror">
 		{% if form.errors %}
-		<p style="color:red">Hmm, that's not the correct username or password.</p>
+		<p style="color:red">Hmm, your username or password were incorrect.</p>
 		{% endif %}
 	</div>
 	
 	<div class="contentholder"><br><br><br>
-		<center><h2>Log in to your account</h2></center>
+		<center><h2>Login to My Account </h2></center>
 	</div>
 
 		
@@ -20,7 +20,7 @@
 	<div id="loginbox"><center>
 		<p>{{form.username.label}} {{form.username }}
 		<p>{{form.password.label }} {{form.password }}
-		<p><input type="submit" value="LOG IN"></br>
+		<p><input type="submit" value="Continue"></br>
 		<input type="hidden" name="next" value="{{ next }}" />
 		</form>
 
