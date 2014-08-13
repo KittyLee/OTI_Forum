@@ -5,7 +5,8 @@
 
 <!--map code below-->
 {% load staticfiles %}
-<script> 
+<script>
+
 		 var width= 960,
 		     height= 500;
 		 var projection = d3.geo.orthographic() 
@@ -14,8 +15,8 @@
 		 var canvas= d3.select("body").append("canvas")
 		 	.attr("width", width)
 		 	.attr("height", height)
-		 	.style("margin-top","350px")
-		 	.style("margin-left",width/2+"px");
+		 	.style("margin-top","")
+		 	.style("margin-left","350px");
 		 var c = canvas.node().getContext("2d");  
 		 <!--were loading the map as 2dimensional-->
 		 var path = d3.geo.path()
@@ -35,7 +36,7 @@
 		 	countries=topojson.feature(world, world.objects.countries).features,
 		 	borders = topojson.mesh(world,world.objects.countries, function(a,b) { return a !==b;}),
 		 	i = -1,
-		 	n=5;
+		 	n=4;
 
 		 	countries = countries.filter(function(d){
 		 		return names.some(function(n) {

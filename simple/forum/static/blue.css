@@ -127,12 +127,13 @@ span.z{ position: absolute;
 /*style for map below */
 
 h1 {
-  position: absolute;
-  top: 450px;
+  position:absolute;
+  right: 100px;
+  top: 800px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 40px;
   text-align: center;
   width: 960px;
-
+  padding-right: 450px;
 }
 
