@@ -5,19 +5,19 @@
 
 	<div class="loginerror">
 		{% if form.errors %}
-		<p style="color:red">Hmm, that's not the right username and password.<br /></p>
+		<p style="color:red">Hmm, that's not the correct username or password.</p>
 		{% endif %}
 	</div>
 	
 	<div class="contentholder"><br><br><br>
-		<h2>Log in to your account</h2>
+		<center><h2>Log in to your account</h2></center>
 	</div>
 
 		
 	<form method="post" action="{% url 'login' %}">
 	{% csrf_token %}
 
-	<div id="loginbox">
+	<div id="loginbox"><center>
 		<p>{{form.username.label}} {{form.username }}
 		<p>{{form.password.label }} {{form.password }}
 		<p><input type="submit" value="LOG IN"></br>
