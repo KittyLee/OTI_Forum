@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<h2>Commotion network is present in: </h2>
 
 <!--map code below-->
 {% load staticfiles %}
@@ -62,8 +61,8 @@
 		 				return function(t) {
 		 					projection.rotate(r(t));
 		 					c.clearRect(0,0, width, height);
-		 					c.fillStyle="FE739B", c.beginPath(), path(land), c.fill();
-		 					c.fillStyle="F8FF00", c.beginPath(), path(countries[i]), c.fill();
+		 					c.fillStyle="C7BA38", c.beginPath(), path(land), c.fill();
+		 					c.fillStyle="black", c.beginPath(), path(countries[i]), c.fill();
 		 					c.strokeStyle="#fff", c.lineWidth = .5, c.beginPath(), path(borders), c.stroke();
 		 					c.strokeStyle="#000", c.lineWidth = 2, c.beginPath(), path(globe), c. stroke();
 
