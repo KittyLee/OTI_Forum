@@ -1,0 +1,96 @@
+#title {text-align:center; 
+			font-size:40px;
+			padding-bottom:30px;
+			padding-top:20px;
+ 			font-weight:bold;}
+/*padding is inside the box, margin is outside the box*/
+
+#nav_bar {height:70px;
+	      width:100%;
+	      background-color:#00ffcf;
+	      padding-top:10px;
+	      padding-bottom:30px;
+	      padding-left:20px;
+	      	}
+
+	       
+.login_btn {height:40px;
+			width:220px;
+			background-color:black;
+      color:white;
+			padding-top:10px; 
+      display: inline-block;
+			margin-top:15px;
+      margin-right:20px;
+	    text-align:center;
+	    font-weight:bold;
+	    font-size:20px;
+	    font-family: Arial;
+		  float: right;}
+
+
+
+#menu_bar {height:60px;
+	      width:100%;
+	     
+	      background-color:#fe739b;
+	      padding-top:20px;
+	      padding-bottom:20px;
+	      padding-left:20px;
+	      }
+
+.feature_btn {height:40px;
+      width:220px;
+      background-color:black;
+      padding-top:10px; 
+      display: inline-block;
+      margin-top:15px;
+      margin-right:20px;
+      color:white;
+      text-align:center;
+      font-weight:bold;
+      font-size:20px;
+      font-family: Arial;
+      float: left;
+
+}
+
+
+.feature_btn:hover {background-color:#877aed;
+                }
+
+
+/* css for search box */
+
+
+form{width:500px;
+    margin:50px;
+    float:right;
+    padding:8px 15px;
+    background:rgba(50,50,50,0.2);
+    
+    
+    
+
+        }
+
+/* end of search code  */
+
+
+
+
+
+
+
+/*style for map below */
+
+h1 {
+  position: absolute;
+  top: 280px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  width: 960px;
+
+}
+
